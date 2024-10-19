@@ -1,32 +1,45 @@
 /*
-static methods
-A static function, unlike a regular(instance) function, is not associated (مش مرتبطة) with an instance of the class
-static methods are called by using the class name, not the instance of the class 
-like console class and it read and write methods are an example of static methods
+Extensions methods
+adding custom methods with methods in C#
 */
 using System;
 public class Program
 {
     public static void Main(string[] args)
     {
-        Bank.CreateNewAccount(); //appear without make instance of the class
+       string WelocmeMessage = "Hello and welcome to my profile";
+       System.Console.WriteLine(WelocmeMessage.Length);
+       System.Console.WriteLine(WelocmeMessage.CountWords());
 
-        Bank account = new Bank();
-        account.createNewAccountNotStatic(); // appear after making instance of the class
-        Console.ReadLine();
+       int x = 5;
+       System.Console.WriteLine(x.IsGreater(10));
+
+       string text = "500";
+       System.Console.WriteLine(text.IsNumber());
         
     }
 }
 
-class Bank
+static class ExtensionsMethods
 {
-    public static void CreateNewAccount()
+    public static bool IsGreater(this int no1, int no2)
     {
-        System.Console.WriteLine("New account has been created using static method");
+        return no1 > no2;
     }
 
-    public void createNewAccountNotStatic()
+    public static bool IsNumber(this string text)
     {
-        System.Console.WriteLine("New account has been created using non static method");
+        return int.TryParse(text, out int n);
+    }
+
+    public static int CountWords(this string statement)
+    {
+        if(!string.IsNullOrEmpty(statement))
+        {
+            string[] stringArray = statement.Split(' ');
+            return stringArray.Length;
+        }
+        else
+            return 0;
     }
 }
