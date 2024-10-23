@@ -2,70 +2,71 @@ using System;
 using System.IO;
 
 /*
-    Encapsulation in C#
-    => refers to an object's ability to hide data and behavior that are not neccesary to its user.
-    it enables a group of properties and methods and other members to considered a single unit or object
+    Polymorphism in C#
+    polymorphism means having many forms.
+    that means a function or an operator behaves differently in different scenarios
 
-    Access Modifiers
+    two types of polymorphism
+    => compile time (static type) => overloading
+    => runtime (dynamic)          => overriding [allow to change the functionality of a method in a child class]
 
-    Public : allow a class to expose its members variables and member function to other function and objects
-    any public member can be accessed from outside the class
-
-    Private : allow a class to hide its member variables and member functions from other function and objects 
-    only function of the same class can access its private members
-
-    protected : allows a child class to access the member variables and member functions of its base class
-    this way it helps in implementing inheritance
-
-    Internal : the type or member can be accessed by any code in the same assembly, but not from another assembly
+    The use of virtual and override supports runtime polymorphism. When you call a method on a reference of the base class type that points to an instance of a derived class, the overridden method in the derived class will be executed.
 */
 
 public class App{
 
  public static void Main()
     {
-        System.Console.WriteLine("Encapsulation");
-        Dog dog = new Dog();
+        System.Console.WriteLine("Polymorphism");
+        // Shape shape = new Shape();
+        // shape.Draw();
         
+        // Shape shape1 = new Circle();
+        // shape1.Draw();
+
+        Shape[] shapes = new Shape[4];
+        shapes[0] = new Shape();
+        shapes[1] = new Circle();
+        shapes[2] = new Triangle();
+        shapes[3] = new Line();
+
+        foreach (Shape shape in shapes)
+        {
+            shape.Draw();
+        }
     }    
    
 }
 
-class Animal{ 
-    // properties - variables
 
-    // Private variable: can only be accessed within the Animal class.
-    private string privateVariable;
-    // Public variable: can be accessed from anywhere, including outside the Animal class.
-    public string publicVariable;
-    // Protected variable: can be accessed within the Animal class and by derived classes (child classes).
-    protected string protectedVariable;
-    // Internal variable: can be accessed by any code in the same assembly, but not from outside the assembly.
-    internal string internalVariable;
-
-    // methods - functions
-    private void TrainAnimalPrivate() {}
-    public void TrainAnimalPublic() { privateVariable }
-    protected void TrainAnimalProtected() {}
-    internal void TrainAnimalInternal() {}
-}
-
-
-class Dog : Animal
+class Shape 
 {
-    Dog dog1 = new Dog();
-    void FeedDog()
+    //  virtual => It provides a base implementation that can be overridden by any derived class.
+    public virtual void Draw()
     {
-        dog1.TrainAnimalProtected()
+        System.Console.WriteLine("Basic Shape is Created!");
     }
 }
 
-class Cat : Animal
-{
-    Dog dog2 = new Dog();
-    Cat cat1 = new Cat();
-    void FeedCat() 
+class Circle : Shape{
+    //  override => This allows the derived class to provide its own implementation of the method.
+    public override void Draw()
     {
-        
+        System.Console.WriteLine("Circle is Created!");
+    }
+}
+
+class Triangle : Shape{
+    public override void Draw()
+    {
+        System.Console.WriteLine("Triangle is Created!");
+    }
+}
+
+class Line : Shape
+{
+    public override void Draw()
+    {
+        System.Console.WriteLine("Line is Created!");
     }
 }
