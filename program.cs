@@ -2,38 +2,32 @@ using System;
 using System.IO;
 
 /*
-    Abstraction in C# تجريد
-    is a concept or an idea not associated[غير مرتبطة] with any specific instance
+    Sealed Classes in C# 
+    are used to restrict the inheritance.
+    once a class is defined as a sealed class this class cannot be inherited
 */
 
 public class App{
 
  public static void Main()
     {
-        System.Console.WriteLine("Abstraction");
-        Line line = new Line();
-        line.SayHello();
-        line.Draw();
+        System.Console.WriteLine("Sealed Classess");
+        Animal animal1 = new Animal();
+       
         
     }    
    
 }
 
-abstract class Person
-{
-    abstract public void Draw() ;
-    public void SayHello()
+// sealed you close class from inherted
+sealed class Animal{
+    public string Name {get; set;}
+    public Animal () 
     {
-        System.Console.WriteLine("Hello from the abstract class");
+        System.Console.WriteLine("Hello from constructor method");
     }
-   
 }
 
-class Line : Person
-
-{
-    public override void Draw()
-    {
-        System.Console.WriteLine("Hello from Line Person");
-    }
+class Dog {
+    public string DogBreed {get; set;}
 }
