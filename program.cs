@@ -11,6 +11,23 @@ using PartialClasses;
     2. when working with automatically generated source, code can be added to the class without having to recreate the source file
     3. when using source generators to generate additional functionality in a class
 
+    roles
+    1. the source file name can be different, 
+    but each partial class's name must be the same.
+
+    2. All the partial class definitions
+    must be in the same namespace and assembly.
+
+    3. Must have the same access modifiers like public or private
+
+    4. If any part is declared abstract, sealed or base type
+    then the whole class is declared of the same type.
+
+    5. Different parts can have different base types
+    so the final class will inherit all the base types.
+
+    6. Must contain the partial keyword
+
 */
 // to compile multiple files in Linux ubuntu
 // mcs -out:program.exe program.cs EmployeeProps.cs EmployeeMethods.cs
