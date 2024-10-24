@@ -30,3 +30,11 @@ public class App{
    
 }
 
+/*
+Partial Class Definition: Both Employee.cs and EmployeeDetails.cs define parts of the Employee class.
+
+Same Namespace: Both files are in the PartialClasses namespace, allowing the C# compiler to merge them into a single class.
+
+Functionality: In your Main method, you can create an Employee instance, set details, and display them using methods defined across the partial class.
+
+*/
