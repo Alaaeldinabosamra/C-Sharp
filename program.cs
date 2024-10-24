@@ -2,32 +2,41 @@ using System;
 using System.IO;
 
 /*
-    Sealed Classes in C# 
-    are used to restrict the inheritance.
-    once a class is defined as a sealed class this class cannot be inherited
+    Static Classes in C# 
+    A static class cannot be instantiated. In other words, you cannot use the new operator to create a variable of the class type
+    because there is no instance variable, you access the members of a static class by using the clas,name itself
 */
 
 public class App{
 
  public static void Main()
     {
-        System.Console.WriteLine("Sealed Classess");
-        Animal animal1 = new Animal();
-       
+        System.Console.WriteLine("Static Classess");
+        
+        System.Console.WriteLine(Company.CompanyName);
+        System.Console.WriteLine(Company.CompanyLocation);
+
+        System.Console.WriteLine(Company.GetTotalEmployees());
+       /*
+            1. only static members allowed
+            2. cannot be instantiated
+            3. is sealed by default [cannot be inherted]
+            4. cannot contain instance constructor
+       */
         
     }    
    
 }
 
-// sealed you close class from inherted
-sealed class Animal{
-    public string Name {get; set;}
-    public Animal () 
+
+static class Company{
+    static public string CompanyName =  "Samraspace";
+    static public string CompanyLocation =  "New Cairo";
+    
+
+    static public int GetTotalEmployees()
     {
-        System.Console.WriteLine("Hello from constructor method");
+        return 3850;
     }
 }
 
-class Dog {
-    public string DogBreed {get; set;}
-}
