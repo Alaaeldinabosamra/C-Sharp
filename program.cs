@@ -1,16 +1,9 @@
 using System;
 using System.IO;
-using PartialClasses;
+
 /*
-    Partial Classes in C# 
-    it is possible to split the definition of a class, a struct, an interface or a method over two or more source files.
-    Each source file contains a section of the type or method definition, and all parts are combined when the application is compiled
-
-    why partial classes
-    1. when working on large projects, spreading a class over sperate files enables multiple programmers to work on it at the same time
-    2. when working with automatically generated source, code can be added to the class without having to recreate the source file
-    3. when using source generators to generate additional functionality in a class
-
+    Structs in C# 
+    A struct type(or structure type) is a value type that can encapsulate data and related functionallity    
 */
 // to compile multiple files in Linux ubuntu
 // mcs -out:program.exe program.cs EmployeeProps.cs EmployeeMethods.cs
@@ -20,13 +13,40 @@ public class App{
 
  public static void Main()
     {
-        System.Console.WriteLine("Partial Classess");
-        
-        Employee newEmployee = new Employee();
-        newEmployee.SetEmployeeDetails("John Doe", 30);
-        newEmployee.DisplayInfo();
-        
+    Employee newEmployee = new Employee();
+    newEmployee.EmployeeName = "John";
+    newEmployee.EmployeeJob = "Lawyer";
+    newEmployee.Salary = 8000;
+    System.Console.WriteLine($"Employee name is : {newEmployee.EmployeeName}");
+    System.Console.WriteLine($"Employee job is : {newEmployee.EmployeeJob}");
+    System.Console.WriteLine($"Employee salary is : {newEmployee.Salary}");
+    newEmployee.DisplayTimesheet();
+    Console.ReadLine();
+    
     }    
    
 }
 
+public struct Employee
+{
+    public string EmployeeName {get; set;}
+    public string EmployeeJob {get; set;}
+    public decimal Salary {get; set;}
+    // // parameterless constructor => work in some versions not all
+    // public Employee()
+    // {
+    //     System.Console.WriteLine("hello from non-parameter constructor");
+    // }
+    // parameterized constructor
+    public Employee(string name, string job, decimal salary)
+    {
+        EmployeeName = name;
+        EmployeeJob = job;
+        Salary = salary;
+    }
+
+    public void DisplayTimesheet()
+    {
+        System.Console.WriteLine("Timesheet method in struct");
+    }
+}
